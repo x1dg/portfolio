@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Danil Cherdantsev — .NET Backend Developer">
+
+<!-- ASCII Banner -->
+<div class="ascii-banner">
+ ██████╗ ██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗
+██╔════╝██╔═══██╗████╗ ████║██║████╗  ██║██╔══██╗██║
+██║     ██║   ██║██╔████╔██║██║██╔██╗ ██║███████║██║
+██║     ██║   ██║██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║
+╚██████╗╚██████╔╝██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗
+ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
+</div>
+
+<!-- System Boot -->
+<div class="command-output">
+  <strong>SYS</strong> [OK] Portfolio v1.0 loaded<br/>
+  <strong>ROLE</strong> [OK] .NET Backend Developer<br/>
+  <strong>EXP</strong> [OK] 7+ years in high-load systems<br/>
+  <strong>STACK</strong> [OK] .NET / C# / Kafka / PostgreSQL<br/>
+  <strong>STATUS</strong> [OK] Open to opportunities<br/><br/>
+  System ready. Scroll to explore.
+</div>
+
+<hr class="section-divider" />
+
+<!-- About -->
+<div class="prompt-line">
+  <span class="prompt">x1dg@portfolio:</span><span class="prompt-path">~/about</span>
+</div>
+
+<div class="prompt-line">
+  <span class="prompt">x1dg@portfolio:~/about$</span>
+  <span class="command"> whoami</span>
+</div>
+<div class="command-output">
+  <strong>Даниил Черданцев</strong> — Senior .NET Backend Developer из Екатеринбурга<br/>
+  7+ лет опыта в FinTech, Insurance и GameDev<br/>
+  Специализируюсь на высоконагруженных микросервисных системах<br/>
+  GitHub: <a href="https://github.com/x1dg" target="_blank">x1dg</a>
+</div>
+
+<div class="prompt-line">
+  <span class="prompt">x1dg@portfolio:~/about$</span>
+  <span class="command"> cat ./skills.txt</span>
+</div>
+<div class="skills-list">
+  <div class="skill-item"><span class="skill-bullet">→</span> .NET 6/8 & ASP.NET Core</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> C# & SQL</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> PostgreSQL / MSSQL / MySQL</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> Apache Kafka & RabbitMQ</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> Redis & Entity Framework Core</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> DDD & CQRS & SAGA</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> Docker & Kubernetes</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> Microservices Architecture</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> TDD (NUnit/xUnit)</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> CI/CD (GitHub Actions/Jenkins)</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> Grafana & Prometheus</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> Linux (Ubuntu)</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> REST & WebAPI</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> OOP & SOLID</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> Git & Dapper</div>
+  <div class="skill-item"><span class="skill-bullet">→</span> Blazor & SignalR</div>
+</div>
+
+<div class="prompt-line">
+  <span class="prompt">x1dg@portfolio:~/about$</span>
+  <span class="command"> cat ./background.txt</span>
+</div>
+<div class="command-output">
+  Tech Lead @ Smokescope (Fintech, US stock market)<br/>
+  Previously: Astrum Entertainment (Warface, 20k CCU)<br/>
+  Previously: Сравни.ру (Insurance, 15+ integrations)<br/>
+  Previously: КНОПКА & ХОСТ<br/>
+  UrFU — Computer Science, 2020<br/>
+  English: B2
+</div>
+
+<hr class="section-divider" />
+
+<!-- Experience -->
+<div class="prompt-line">
+  <span class="prompt">x1dg@portfolio:</span><span class="prompt-path">~/experience</span>
+</div>
+
+<div class="prompt-line">
+  <span class="prompt">x1dg@portfolio:~/experience$</span>
+  <span class="command"> ls -la</span>
+</div>
+
+<div class="project-item">
+  <div class="project-perms">drwxr-xr-x</div>
+  <div class="project-meta">
+    <div><span class="project-name">smokescope/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2026 — 2026, 5 months]</span></div>
+    <div class="project-desc">Tech Lead — Anomaly detection platform for US stock market. .NET 8, Kafka, PostgreSQL, Redis, SignalR, Docker, K8s.</div>
+    <div class="project-desc">→ Event-driven architecture, SAGA + Outbox, 6x faster releases (2h → 20min), incident detection 15min → 3min</div>
+  </div>
+</div>
+
+<div class="project-item">
+  <div class="project-perms">drwxr-xr-x</div>
+  <div class="project-meta">
+    <div><span class="project-name">astrum-entertainment/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2025 — 2026, 1 year]</span></div>
+    <div class="project-desc">.NET Developer — Warface (online shooter, 20k CCU). .NET 5/8, C++, CryENGINE 3, MySQL, RabbitMQ.</div>
+    <div class="project-desc">→ API -30% latency, weapon stickers system (99.5% success), matchmaking 45s → 25s, fixed 12 memory leaks (-2.5GB RAM)</div>
+  </div>
+</div>
+
+<div class="project-item">
+  <div class="project-perms">drwxr-xr-x</div>
+  <div class="project-meta">
+    <div><span class="project-name">sravni.ru/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2021 — 2024, 3 years]</span></div>
+    <div class="project-desc">.NET Developer — Insurance platform (OSAGO), 15+ integrations via REST/SOAP. .NET 6/8, PostgreSQL, MSSQL, Redis, RabbitMQ, K8s.</div>
+    <div class="project-desc">→ Monolith → microservices, CQRS, MSSQL → PostgreSQL (300GB zero downtime), SQL 4s → 450ms, RAM -25% (~300k RUB/mo saved), .NET 3.1→6→8 migration</div>
+  </div>
+</div>
+
+<div class="project-item">
+  <div class="project-perms">drwxr-xr-x</div>
+  <div class="project-meta">
+    <div><span class="project-name">knopka.com/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2020 — 2021, 10 months]</span></div>
+    <div class="project-desc">.NET Developer — Corporate portal (Slack-like). .NET Core 3.1, PostgreSQL, RabbitMQ, Redis, SignalR, Docker, React.</div>
+    <div class="project-desc">→ Real-time presence (SignalR/Redis), ML.NET + Python FastAPI, CI/CD in Jenkins, jQuery → React+TypeScript</div>
+  </div>
+</div>
+
+<div class="project-item">
+  <div class="project-perms">drwxr-xr-x</div>
+  <div class="project-meta">
+    <div><span class="project-name">hostco.ru/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2018 — 2020, 2 years]</span></div>
+    <div class="project-desc">.NET Programmer — Medical Information System (MIS). .NET Framework 4.x, MSSQL, React, TypeScript, SOAP, TeamCity.</div>
+    <div class="project-desc">→ Reporting 20-30s → 1-2s (15-20x), appointment booking with OMS/DMS/SMS, jQuery → React migration</div>
+  </div>
+</div>
+
+<hr class="section-divider" />
+
+<!-- Key Metrics -->
+<div class="prompt-line">
+  <span class="prompt">x1dg@portfolio:</span><span class="prompt-path">~/metrics</span>
+</div>
+
+<div class="prompt-line">
+  <span class="prompt">x1dg@portfolio:~/metrics$</span>
+  <span class="command"> cat ./achievements.md</span>
+</div>
+<div class="command-output" style="font-size: 0.85rem;">
+  <strong>6×</strong> Faster releases (2h → 20min) @ Smokescope<br/>
+  <strong>30%</strong> API latency reduction @ Warface<br/>
+  <strong>99.5%</strong> Success rate for stickers system @ Warface<br/>
+  <strong>300k RUB/mo</strong> Cost savings @ Сравни.ру<br/>
+  <strong>15-20×</strong> Reporting speedup @ ХОСТ<br/>
+  <strong>12</strong> Memory leaks fixed @ Warface (-2.5GB RAM)<br/>
+  <strong>150k</strong> Transactions/month @ Сравни.ру<br/>
+</div>
+
+<hr class="section-divider" />
+
+<!-- Contact -->
+<div class="prompt-line">
+  <span class="prompt">x1dg@portfolio:</span><span class="prompt-path">~/contact</span>
+</div>
+
+<div class="prompt-line">
+  <span class="prompt">x1dg@portfolio:~/contact$</span>
+  <span class="command"> cat ./links.txt</span>
+</div>
+<div class="contact-links">
+  <a class="contact-link" href="https://github.com/x1dg" target="_blank" rel="noopener">
+    <span class="contact-label">GITHUB</span>
+    <span class="contact-value">→ github.com/x1dg</span>
+  </a>
+  <a class="contact-link" href="https://t.me/null_ref_ex" target="_blank" rel="noopener">
+    <span class="contact-label">TELEGRAM</span>
+    <span class="contact-value">→ @null_ref_ex</span>
+  </a>
+  <a class="contact-link" href="mailto:danilnorm@gmail.com">
+    <span class="contact-label">EMAIL</span>
+    <span class="contact-value">→ danilnorm@gmail.com</span>
+  </a>
+  <a class="contact-link" href="https://linkedin.com" target="_blank" rel="noopener">
+    <span class="contact-label">PHONE</span>
+    <span class="contact-value">→ +7 (912) 653-02-02</span>
+  </a>
+</div>
+
+<hr class="section-divider" />
+<p style="color: var(--fg-muted); font-size: 0.85rem;">// End of file. EOF<span class="cursor"></span></p>
+
+</Layout>

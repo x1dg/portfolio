@@ -1,0 +1,296 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style is:global>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #0d1117;
+        --bg-secondary: #161b22;
+        --fg: #e6edf3;
+        --fg-muted: #8b949e;
+        --accent: #3fb950;
+        --accent-dim: #238636;
+        --border: #30363d;
+        --terminal-green: #00ff41;
+        --terminal-green-dim: #00cc33;
+      }
+      html {
+        font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
+        font-size: 16px;
+      }
+      body {
+        min-height: 100vh;
+        background: 
+          radial-gradient(ellipse at top, #161b22 0%, #0d1117 50%),
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 65, 0.02) 2px,
+            rgba(0, 255, 65, 0.02) 4px
+          );
+      }
+      ::selection {
+        background: var(--accent);
+        color: var(--bg);
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      a:hover {
+        color: var(--terminal-green);
+        text-decoration: underline;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+      /* Terminal window */
+      .terminal {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 
+          0 0 0 1px var(--border),
+          0 8px 32px rgba(0, 0, 0, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      .terminal-header {
+        background: #1f2428;
+        border-bottom: 1px solid var(--border);
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .terminal-dots {
+        display: flex;
+        gap: 0.375rem;
+      }
+      .terminal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .terminal-dot.close { background: #ff5f57; }
+      .terminal-dot.minimize { background: #ffbd2e; }
+      .terminal-dot.maximize { background: #28ca42; }
+      .terminal-title {
+        margin-left: 1rem;
+        color: var(--fg-muted);
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+      .terminal-body {
+        padding: 1.5rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+      /* ASCII Banner */
+      .ascii-banner {
+        color: var(--terminal-green);
+        font-size: 0.7rem;
+        line-height: 1.1;
+        white-space: pre;
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
+        font-family: 'Space Mono', monospace;
+      }
+      /* Prompt */
+      .prompt-line {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .prompt {
+        color: var(--terminal-green);
+        font-weight: 700;
+      }
+      .prompt-path {
+        color: #58a6ff;
+        font-weight: 500;
+      }
+      .command {
+        color: var(--fg);
+      }
+      .command-output {
+        color: var(--fg-muted);
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+      }
+      .command-output strong {
+        color: var(--fg);
+      }
+      .section-divider {
+        color: var(--border);
+        margin: 1.5rem 0;
+        border: none;
+        border-top: 1px solid var(--border);
+      }
+      /* Skills list */
+      .skills-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      .skill-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        background: rgba(0, 255, 65, 0.05);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        transition: all 0.2s;
+      }
+      .skill-item:hover {
+        border-color: var(--accent);
+        background: rgba(0, 255, 65, 0.1);
+      }
+      .skill-bullet {
+        color: var(--terminal-green);
+      }
+      /* Projects list */
+      .project-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        margin-bottom: 0.75rem;
+        transition: all 0.2s;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .project-item:hover {
+        border-color: var(--accent);
+        background: rgba(0, 255, 65, 0.03);
+      }
+      .project-perms {
+        color: var(--fg-muted);
+        font-size: 0.8rem;
+        white-space: nowrap;
+      }
+      .project-meta {
+        flex: 1;
+      }
+      .project-name {
+        color: #58a6ff;
+        font-weight: 600;
+      }
+      .project-desc {
+        color: var(--fg-muted);
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+      }
+      .project-link {
+        color: var(--accent);
+        font-size: 0.85rem;
+      }
+      /* Contact links */
+      .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        transition: all 0.2s;
+      }
+      .contact-link:hover {
+        border-color: var(--accent);
+        background: rgba(0, 255, 65, 0.05);
+      }
+      .contact-label {
+        color: var(--fg-muted);
+        min-width: 100px;
+      }
+      .contact-value {
+        color: var(--accent);
+      }
+      /* Blinking cursor */
+      .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 1.2em;
+        background: var(--terminal-green);
+        margin-left: 2px;
+        animation: blink 1s infinite;
+        vertical-align: text-bottom;
+      }
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+      }
+      /* Loading animation */
+      .loading {
+        color: var(--fg-muted);
+        font-style: italic;
+      }
+      /* Responsive */
+      @media (max-width: 600px) {
+        .container { padding: 1rem; }
+        .terminal-body { padding: 1rem; font-size: 0.85rem; }
+        .ascii-banner { font-size: 0.55rem; }
+        .skills-list { grid-template-columns: 1fr; }
+      }
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .cursor { animation: none; opacity: 1; }
+        * { transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="terminal">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot close"></span>
+            <span class="terminal-dot minimize"></span>
+            <span class="terminal-dot maximize"></span>
+          </div>
+          <span class="terminal-title">x1dg@portfolio:~$</span>
+        </div>
+        <div class="terminal-body">
+          <slot />
+        </div>
+      </div>
+      <p style="text-align: center; color: var(--fg-muted); font-size: 0.75rem; margin-top: 1.5rem;">
+        Built with Astro, JetBrains Mono, and ☕ · <a href="https://github.com/x1dg" target="_blank" rel="noopener">Source</a>
+      </p>
+    </div>
+  </body>
+</html>
