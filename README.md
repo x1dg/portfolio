@@ -16,7 +16,6 @@
 ## Установка
 
 ```bash
-cd portfolio
 npm install
 ```
 
