@@ -1,5 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SkillItem from '../components/SkillItem.astro';
+import ProjectItem from '../components/ProjectItem.astro';
+import ContactLink from '../components/ContactLink.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const skills = [
+  'C#, C++, Python',
+  '.NET 6/8 & ASP.NET Core',
+  'React',
+  'Blazor',
+  'Entity Framework Core & Dapper',
+  'PostgreSQL / MSSQL / MySQL',
+  'Redis',
+  'Apache Kafka & RabbitMQ',
+  'DDD & CQRS & SAGA & Outbox',
+  'Microservices Architecture',
+  'Docker & Kubernetes',
+  'REST & WebAPI & SignalR',
+  'ELK Stack',
+  'Grafana & Prometheus',
+  'TDD (NUnit/xUnit)',
+  'CI/CD (GitHub Actions/Jenkins)',
+  'Git',
+  'Linux (Ubuntu)',
+  'OOP & SOLID',
+];
+
+const contacts = [
+  { label: 'GITHUB', href: 'https://github.com/x1dg', value: 'github.com/x1dg' },
+  { label: 'TELEGRAM', href: 'https://t.me/null_ref_ex', value: '@null_ref_ex' },
+  { label: 'EMAIL', href: 'mailto:danilnorm@gmail.com', value: 'danilnorm@gmail.com' },
+  { label: 'PHONE', href: 'https://linkedin.com', value: '+7 (912) 653-02-02' },
+];
 ---
 <Layout title="Danil Cherdantsev — .NET Backend Developer">
 
@@ -43,14 +76,7 @@ import Layout from '../layouts/Layout.astro';
 
 <!-- About -->
 <div id="about"></div>
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:</span><span class="prompt-path">~/about</span>
-</div>
-
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:~/about$</span>
-  <span class="command"> whoami</span>
-</div>
+<SectionHeader path="~/about" command=" whoami" />
 <div class="command-output">
   <strong>Даниил Черданцев</strong> — Senior .NET Backend Developer из Екатеринбурга<br/>
   7+ лет опыта в FinTech, Insurance и GameDev<br/>
@@ -58,37 +84,13 @@ import Layout from '../layouts/Layout.astro';
   GitHub: <a href="https://github.com/x1dg" target="_blank">x1dg</a>
 </div>
 
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:~/about$</span>
-  <span class="command"> cat ./skills.txt</span>
-</div>
+<SectionHeader path="~/about" command=" cat ./skills.txt" />
 <div id="skills"></div>
 <div class="skills-list">
-  <div class="skill-item"><span class="skill-bullet">→</span> C#, C++, Python</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> .NET 6/8 & ASP.NET Core</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> React</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> Blazor</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> Entity Framework Core & Dapper</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> PostgreSQL / MSSQL / MySQL</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> Redis</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> Apache Kafka & RabbitMQ</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> DDD & CQRS & SAGA & Outbox</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> Microservices Architecture</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> Docker & Kubernetes</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> REST & WebAPI & SignalR</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> ELK Stack</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> Grafana & Prometheus</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> TDD (NUnit/xUnit)</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> CI/CD (GitHub Actions/Jenkins)</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> Git</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> Linux (Ubuntu)</div>
-  <div class="skill-item"><span class="skill-bullet">→</span> OOP & SOLID</div>
+  {skills.map(skill => <SkillItem text={skill} />)}
 </div>
 
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:~/about$</span>
-  <span class="command"> cat ./background.txt</span>
-</div>
+<SectionHeader path="~/about" command=" cat ./background.txt" />
 <div class="command-output">
   Tech Lead @ Smokescope (Fintech, US stock market)<br/>
   Previously: Astrum Entertainment (Warface, 20k CCU)<br/>
@@ -102,72 +104,49 @@ import Layout from '../layouts/Layout.astro';
 
 <!-- Experience -->
 <div id="experience"></div>
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:</span><span class="prompt-path">~/experience</span>
-</div>
+<SectionHeader path="~/experience" command=" ls -la" />
 
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:~/experience$</span>
-  <span class="command"> ls -la</span>
-</div>
+<ProjectItem
+  name="smokescope/"
+  period="[2026 — 2026, 5 months]"
+  role="Tech Lead"
+  description="Anomaly detection platform for US stock market. .NET 8, Kafka, PostgreSQL, Redis, SignalR, Docker, K8s."
+  highlights="Event-driven architecture, SAGA + Outbox, 6x faster releases (2h → 20min), incident detection 15min → 3min"
+/>
 
-<div class="project-item">
-  <div class="project-perms">drwxr-xr-x</div>
-  <div class="project-meta">
-    <div><span class="project-name">smokescope/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2026 — 2026, 5 months]</span></div>
-    <div class="project-desc">Tech Lead — Anomaly detection platform for US stock market. .NET 8, Kafka, PostgreSQL, Redis, SignalR, Docker, K8s.</div>
-    <div class="project-desc">→ Event-driven architecture, SAGA + Outbox, 6x faster releases (2h → 20min), incident detection 15min → 3min</div>
-  </div>
-</div>
+<ProjectItem
+  name="astrum-entertainment/"
+  period="[2025 — 2026, 1 year]"
+  description=".NET Developer — Warface (online shooter, 20k CCU). .NET 5/8, C++, CryENGINE 3, MySQL, RabbitMQ."
+  highlights="API -30% latency, weapon stickers system (99.5% success), matchmaking 45s → 25s, fixed 12 memory leaks (-2.5GB RAM)"
+/>
 
-<div class="project-item">
-  <div class="project-perms">drwxr-xr-x</div>
-  <div class="project-meta">
-    <div><span class="project-name">astrum-entertainment/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2025 — 2026, 1 year]</span></div>
-    <div class="project-desc">.NET Developer — Warface (online shooter, 20k CCU). .NET 5/8, C++, CryENGINE 3, MySQL, RabbitMQ.</div>
-    <div class="project-desc">→ API -30% latency, weapon stickers system (99.5% success), matchmaking 45s → 25s, fixed 12 memory leaks (-2.5GB RAM)</div>
-  </div>
-</div>
+<ProjectItem
+  name="sravni.ru/"
+  period="[2021 — 2024, 3 years]"
+  description=".NET Developer — Insurance platform (OSAGO), 15+ integrations via REST/SOAP. .NET 6/8, PostgreSQL, MSSQL, Redis, RabbitMQ, K8s."
+  highlights="Monolith → microservices, CQRS, MSSQL → PostgreSQL (300GB zero downtime), SQL 4s → 450ms, RAM -25% (~300k RUB/mo saved), .NET 3.1→6→8 migration"
+/>
 
-<div class="project-item">
-  <div class="project-perms">drwxr-xr-x</div>
-  <div class="project-meta">
-    <div><span class="project-name">sravni.ru/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2021 — 2024, 3 years]</span></div>
-    <div class="project-desc">.NET Developer — Insurance platform (OSAGO), 15+ integrations via REST/SOAP. .NET 6/8, PostgreSQL, MSSQL, Redis, RabbitMQ, K8s.</div>
-    <div class="project-desc">→ Monolith → microservices, CQRS, MSSQL → PostgreSQL (300GB zero downtime), SQL 4s → 450ms, RAM -25% (~300k RUB/mo saved), .NET 3.1→6→8 migration</div>
-  </div>
-</div>
+<ProjectItem
+  name="knopka.com/"
+  period="[2020 — 2021, 10 months]"
+  description=".NET Developer — Corporate portal (Slack-like). .NET Core 3.1, PostgreSQL, RabbitMQ, Redis, SignalR, Docker, React."
+  highlights="Real-time presence (SignalR/Redis), ML.NET + Python FastAPI, CI/CD in Jenkins, jQuery → React+TypeScript"
+/>
 
-<div class="project-item">
-  <div class="project-perms">drwxr-xr-x</div>
-  <div class="project-meta">
-    <div><span class="project-name">knopka.com/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2020 — 2021, 10 months]</span></div>
-    <div class="project-desc">.NET Developer — Corporate portal (Slack-like). .NET Core 3.1, PostgreSQL, RabbitMQ, Redis, SignalR, Docker, React.</div>
-    <div class="project-desc">→ Real-time presence (SignalR/Redis), ML.NET + Python FastAPI, CI/CD in Jenkins, jQuery → React+TypeScript</div>
-  </div>
-</div>
-
-<div class="project-item">
-  <div class="project-perms">drwxr-xr-x</div>
-  <div class="project-meta">
-    <div><span class="project-name">hostco.ru/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2018 — 2020, 2 years]</span></div>
-    <div class="project-desc">.NET Programmer — Medical Information System (MIS). .NET Framework 4.x, MSSQL, React, TypeScript, SOAP, TeamCity.</div>
-    <div class="project-desc">→ Reporting 20-30s → 1-2s (15-20x), appointment booking with OMS/DMS/SMS, jQuery → React migration</div>
-  </div>
-</div>
+<ProjectItem
+  name="hostco.ru/"
+  period="[2018 — 2020, 2 years]"
+  description=".NET Programmer — Medical Information System (MIS). .NET Framework 4.x, MSSQL, React, TypeScript, SOAP, TeamCity."
+  highlights="Reporting 20-30s → 1-2s (15-20x), appointment booking with OMS/DMS/SMS, jQuery → React migration"
+/>
 
 <hr class="section-divider" />
 
 <!-- Key Metrics -->
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:</span><span class="prompt-path">~/metrics</span>
-</div>
-
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:~/metrics$</span>
-  <span class="command"> cat ./achievements.md</span>
-</div>
-<div class="command-output" style="font-size: 0.85rem;">
+<SectionHeader path="~/metrics" command=" cat ./achievements.md" />
+<div class="command-output metrics-output">
   <strong>6×</strong> Faster releases (2h → 20min) @ Smokescope<br/>
   <strong>30%</strong> API latency reduction @ Warface<br/>
   <strong>99.5%</strong> Success rate for stickers system @ Warface<br/>
@@ -181,86 +160,55 @@ import Layout from '../layouts/Layout.astro';
 
 <!-- STALKER Mods -->
 <div id="stalker"></div>
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:</span><span class="prompt-path">~/stalker-mods</span>
-</div>
+<SectionHeader path="~/stalker-mods" command=" ls -la" />
 
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:~/stalker-mods$</span>
-  <span class="command"> ls -la</span>
-</div>
-
-<div class="project-item">
-  <div class="project-perms">drwxr-xr-x</div>
-  <div class="project-meta">
-    <div><span class="project-name">priboi-story-eternal/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2021 — н.в., OGSR Engine]</span></div>
-    <div class="project-desc">Адаптация легендарного мода "Прибой" на движок OGSR. Полная переработка: новый интерфейс, оружейный пак, анимации, погода.</div>
-    <div class="project-desc">→ 26 страниц на форуме, 25 подписчиков, активная поддержка</div>
-    <div style="margin-top: 0.75rem;">
-      <div style="color: var(--fg-muted); font-size: 0.8rem; margin-bottom: 0.5rem;">// Видео-обзоры:</div>
-      <div class="project-desc">→ <a href="https://www.youtube.com/results?search_query=priboi+story+eternal+ogsr" target="_blank" style="color: var(--accent);">Let's Play / Обзоры на YouTube</a></div>
-    </div>
-    <div style="margin-top: 0.75rem;">
-      <div style="color: var(--fg-muted); font-size: 0.8rem; margin-bottom: 0.5rem;">// Отзывы с форума:</div>
-      <div class="project-desc" style="font-style: italic;">"Изменения порадовали, так что буду ждать старичка Фотографа" — Maximouse</div>
-      <div class="project-desc" style="font-style: italic;">"Хорошее дело делаете!" — Бурбон</div>
-      <div class="project-desc" style="font-style: italic;">"Вах красавчики, желаю терпения и удачи" — Mervin62</div>
-    </div>
-    <div style="margin-top: 0.5rem;">
-      <a href="https://ap-pro.ru/forums/topic/2963-priboi-story-%E2%80%94-eternal-ogsr/" target="_blank" style="color: var(--accent); font-size: 0.85rem;">→ ap-pro.ru/forums/topic/2963</a>
-    </div>
+<ProjectItem
+  name="priboi-story-eternal/"
+  period="[2021 — н.в., OGSR Engine]"
+  description=`Адаптация легендарного мода "Прибой" на движок OGSR. Полная переработка: новый интерфейс, оружейный пак, анимации, погода.`
+  highlights="26 страниц на форуме, 25 подписчиков, активная поддержка"
+>
+  <div class="mod-extra">
+    <div class="mod-label">// Видео-обзоры:</div>
+    <div class="project-desc">→ <a href="https://www.youtube.com/results?search_query=priboi+story+eternal+ogsr" target="_blank" class="project-link">Let's Play / Обзоры на YouTube</a></div>
   </div>
-</div>
-
-<div class="project-item">
-  <div class="project-perms">drwxr-xr-x</div>
-  <div class="project-meta">
-    <div><span class="project-name">fotograf-selfmade/</span> <span style="color: var(--fg-muted); font-size: 0.8rem;">[2022 — н.в., OGSR Engine, в разработке]</span></div>
-    <div class="project-desc">Глобальное переосмысление мода "Фотограф" на OGSR. Новые квесты, диалоги, интерфейс, оружие на ЗП-руках.</div>
-    <div class="project-desc">→ Команда: 1beer, Nimi, Paracetamol, ZonaChe</div>
-    <div class="project-desc">→ ~85% готовности, ОБТ вышел 04.11.2022</div>
-    <div style="margin-top: 0.75rem;">
-      <div style="color: var(--fg-muted); font-size: 0.8rem; margin-bottom: 0.5rem;">// Discord:</div>
-      <div class="project-desc">→ <a href="https://discord.gg/9fpMWDmGqk" target="_blank" style="color: var(--accent);">discord.gg/9fpMWDmGqk</a></div>
-    </div>
-    <div style="margin-top: 0.5rem;">
-      <a href="https://ap-pro.ru/forums/topic/3329-fotograf-selfmade/" target="_blank" style="color: var(--accent); font-size: 0.85rem;">→ ap-pro.ru/forums/topic/3329</a>
-    </div>
+  <div class="mod-extra">
+    <div class="mod-label">// Отзывы с форума:</div>
+    <div class="project-desc quote">"Изменения порадовали, так что буду ждать старичка Фотографа" — Maximouse</div>
+    <div class="project-desc quote">"Хорошее дело делаете!" — Бурбон</div>
+    <div class="project-desc quote">"Вах красавчики, желаю терпения и удачи" — Mervin62</div>
   </div>
-</div>
+  <div class="mod-extra">
+    <a href="https://ap-pro.ru/forums/topic/2963-priboi-story-%E2%80%94-eternal-ogsr/" target="_blank" class="project-link">→ ap-pro.ru/forums/topic/2963</a>
+  </div>
+</ProjectItem>
+
+<ProjectItem
+  name="fotograf-selfmade/"
+  period="[2022 — н.в., OGSR Engine, в разработке]"
+  description=`Глобальное переосмысление мода "Фотограф" на OGSR. Новые квесты, диалоги, интерфейс, оружие на ЗП-руках.`
+  highlights="Команда: 1beer, Nimi, Paracetamol, ZonaChe"
+>
+  <div class="project-desc">→ ~85% готовности, ОБТ вышел 04.11.2022</div>
+  <div class="mod-extra">
+    <div class="mod-label">// Discord:</div>
+    <div class="project-desc">→ <a href="https://discord.gg/9fpMWDmGqk" target="_blank" class="project-link">discord.gg/9fpMWDmGqk</a></div>
+  </div>
+  <div class="mod-extra">
+    <a href="https://ap-pro.ru/forums/topic/3329-fotograf-selfmade/" target="_blank" class="project-link">→ ap-pro.ru/forums/topic/3329</a>
+  </div>
+</ProjectItem>
 
 <hr class="section-divider" />
 
 <!-- Contact -->
 <div id="contact"></div>
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:</span><span class="prompt-path">~/contact</span>
-</div>
-
-<div class="prompt-line">
-  <span class="prompt">x1dg@portfolio:~/contact$</span>
-  <span class="command"> cat ./links.txt</span>
-</div>
+<SectionHeader path="~/contact" command=" cat ./links.txt" />
 <div class="contact-links">
-  <a class="contact-link" href="https://github.com/x1dg" target="_blank" rel="noopener">
-    <span class="contact-label">GITHUB</span>
-    <span class="contact-value">→ github.com/x1dg</span>
-  </a>
-  <a class="contact-link" href="https://t.me/null_ref_ex" target="_blank" rel="noopener">
-    <span class="contact-label">TELEGRAM</span>
-    <span class="contact-value">→ @null_ref_ex</span>
-  </a>
-  <a class="contact-link" href="mailto:danilnorm@gmail.com">
-    <span class="contact-label">EMAIL</span>
-    <span class="contact-value">→ danilnorm@gmail.com</span>
-  </a>
-  <a class="contact-link" href="https://linkedin.com" target="_blank" rel="noopener">
-    <span class="contact-label">PHONE</span>
-    <span class="contact-value">→ +7 (912) 653-02-02</span>
-  </a>
+  {contacts.map(c => <ContactLink label={c.label} href={c.href} value={c.value} />)}
 </div>
 
 <hr class="section-divider" />
-<p style="color: var(--fg-muted); font-size: 0.85rem;">// End of file. EOF<span class="cursor"></span></p>
+<p class="eof-line">// End of file. EOF<span class="cursor"></span></p>
 
 </Layout>
