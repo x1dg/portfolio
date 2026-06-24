@@ -514,7 +514,7 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
@@ -532,9 +532,13 @@ a:hover {
 }
 
 .building {
-  background: #0d0d12;
+  background: #1a1020;
   image-rendering: pixelated;
   position: relative;
+  border: 1px solid rgba(255, 107, 43, 0.15);
+  box-shadow: 
+    inset 0 0 20px rgba(255, 107, 43, 0.05),
+    0 0 30px rgba(255, 107, 43, 0.1);
 }
 
 .building::before {
