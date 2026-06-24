@@ -1,0 +1,17 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+const { src, alt, caption } = Astro.props;
+---
+<figure class="gallery-item">
+  <a href={src} target="_blank" rel="noopener" class="gallery-link">
+    <img src={src} alt={alt} loading="lazy" class="gallery-img" />
+    <div class="gallery-overlay">
+      <span class="gallery-zoom">[VIEW]</span>
+    </div>
+  </a>
+  {caption && <figcaption class="gallery-caption">{caption}</figcaption>}
+</figure>

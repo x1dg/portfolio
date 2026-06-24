@@ -4,6 +4,7 @@ import SkillItem from '../components/SkillItem.astro';
 import ProjectItem from '../components/ProjectItem.astro';
 import ContactLink from '../components/ContactLink.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import GalleryItem from '../components/GalleryItem.astro';
 
 const skills = [
   'C#, C++, Python',
@@ -198,6 +199,15 @@ const contacts = [
     <a href="https://ap-pro.ru/forums/topic/3329-fotograf-selfmade/" target="_blank" class="project-link">→ ap-pro.ru/forums/topic/3329</a>
   </div>
 </ProjectItem>
+
+<hr class="section-divider" />
+
+<!-- Gallery -->
+<div id="gallery"></div>
+<SectionHeader path="~/gallery" command=" ls -la ./photos" />
+<div class="gallery-grid">
+  <GalleryItem src="/images/donil.jpg" alt="Danil Cherdantsev" caption="donil.jpg" />
+</div>
 
 <hr class="section-divider" />
 
