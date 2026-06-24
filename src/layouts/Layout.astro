@@ -113,20 +113,6 @@ const { title } = Astro.props;
             closeModal();
           }
         });
-
-        // Visitor counter
-        const counterEl = document.getElementById('visitor-count');
-        if (counterEl) {
-          fetch('https://api.countapi.xyz/hit/x1dg-portfolio/visitors')
-            .then(r => r.json())
-            .then(data => {
-              counterEl.textContent = data.value.toLocaleString();
-            })
-            .catch(() => {
-              counterEl.textContent = 'unavailable';
-              counterEl.style.color = 'var(--fg-muted)';
-            });
-        }
       });
     </script>
   </body>

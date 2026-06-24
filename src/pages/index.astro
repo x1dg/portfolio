@@ -71,7 +71,6 @@ const contacts = [
   <a href="#skills" class="nav-link">~/skills</a>
   <a href="#stalker" class="nav-link">~/stalker-mods</a>
   <a href="#gallery" class="nav-link">~/gallery</a>
-  <a href="#stats" class="nav-link">~/stats</a>
   <a href="#contact" class="nav-link">~/contact</a>
 </nav>
 
@@ -220,19 +219,6 @@ const contacts = [
 <SectionHeader path="~/contact" command=" cat ./links.txt" />
 <div class="contact-links">
   {contacts.map(c => <ContactLink label={c.label} href={c.href} value={c.value} />)}
-</div>
-
-<hr class="section-divider" />
-
-<!-- Visitor Counter -->
-<div id="stats"></div>
-<SectionHeader path="~/stats" command=" cat ./visitors.txt" />
-<div class="command-output" id="visitor-counter">
-  <span class="prompt">x1dg@portfolio:~/stats$</span>
-  <span class="command"> cat visitors.txt</span>
-</div>
-<div class="command-output">
-  Unique visitors: <strong id="visitor-count" style="color: var(--accent);">loading...</strong>
 </div>
 
 <hr class="section-divider" />
