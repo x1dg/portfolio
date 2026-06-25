@@ -2,6 +2,6 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://x1dg.github.io',
-  base: '/portfolio',
+  base: '/about',
   output: 'static',
 });
